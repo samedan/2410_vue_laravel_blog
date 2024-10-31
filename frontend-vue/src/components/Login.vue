@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import axios from "axios";
+import store from "../store";
 const user = {
     email: "",
     password: "",
@@ -56,15 +56,7 @@ const user = {
 
 function login(e) {
     e.preventDefault();
-    axios
-        .post("http://127.0.0.1:8000/api/login", user)
-        .then((res) => {
-            alert("Logged in");
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    store.dispatch("login", user);
     console.log(user);
 }
 </script>

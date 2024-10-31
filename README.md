@@ -21,3 +21,8 @@
 ### VueX
 
 > npm i vuex@next --save
+> Store /src/stpre.index.js
+
+### Axios & Headers
+
+> axiosClient -> src/axiosClient

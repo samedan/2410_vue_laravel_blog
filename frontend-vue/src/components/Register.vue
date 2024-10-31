@@ -62,6 +62,7 @@
 
 <script setup>
 import axios from "axios";
+import store from "../store";
 
 const user = {
     name: "",
@@ -71,15 +72,7 @@ const user = {
 
 function register(e) {
     e.preventDefault();
-    axios
-        .post("http://127.0.0.1:8000/api/register", user)
-        .then((res) => {
-            alert("registered succesfully");
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    store.dispatch("register", user);
     console.log(user);
 }
 </script>
