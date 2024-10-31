@@ -9,4 +9,8 @@
 > npm i -D tailwindcss postcss autoprefixer
 > npx tailwindcss init -p
 
-### Register.vue
+### Register.vue & Login.vue
+
+### Axios
+
+> npm i axios

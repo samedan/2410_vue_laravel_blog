@@ -1,26 +1,13 @@
 <template>
     <div class="w-full flex justify-center mt-20">
         <form
-            @submit="register"
+            @submit="login"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
             <div class="mb-4">
-                <h2 class="text-xl font-bold">Register Account</h2>
+                <h2 class="text-xl font-bold">Login Account</h2>
             </div>
-            <div class="mb-4">
-                <label
-                    for="email"
-                    class="block text-gray-700 text-sm font-bold mb-2"
-                    >Name</label
-                >
-                <input
-                    type="text"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="name"
-                    v-model="user.name"
-                    placeholder="name"
-                />
-            </div>
+
             <div class="mb-4">
                 <label
                     for="email"
@@ -53,7 +40,7 @@
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                 >
-                    Sign up
+                    Sign in
                 </button>
             </div>
         </form>
@@ -62,19 +49,17 @@
 
 <script setup>
 import axios from "axios";
-
 const user = {
-    name: "",
     email: "",
     password: "",
 };
 
-function register(e) {
+function login(e) {
     e.preventDefault();
     axios
-        .post("http://127.0.0.1:8000/api/register", user)
+        .post("http://127.0.0.1:8000/api/login", user)
         .then((res) => {
-            alert("registered succesfully");
+            alert("Logged in");
             console.log(res);
         })
         .catch((err) => {
