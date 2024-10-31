@@ -1,13 +1,8 @@
-<script setup>
-import Register from "./components/Register.vue";
-import Login from "./components/Login.vue";
-</script>
+<script setup></script>
 
 <template>
     <div>
-        <h1>Vue Blog</h1>
-        <Register></Register>
-        <Login></Login>
+        <router-view></router-view>
     </div>
 </template>
 

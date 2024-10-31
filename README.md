@@ -14,3 +14,10 @@
 ### Axios
 
 > npm i axios
+> npm i vue-router@4
+
+### Router
+
+### VueX
+
+> npm i vuex@next --save
