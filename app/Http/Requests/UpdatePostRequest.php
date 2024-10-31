@@ -14,11 +14,11 @@ class UpdatePostRequest extends FormRequest
         return true;
     }
 
-    // public function prepareForValidation(){
-    //     $this->merge([
-    //         'user_id' => $this->user()->id
-    //     ]);
-    // }
+    public function prepareForValidation(){
+        $this->merge([
+            'user_id' => $this->user()->id
+        ]);
+    }
 
     /**
      * Get the validation rules that apply to the request.
