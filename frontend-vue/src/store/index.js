@@ -35,6 +35,13 @@ const store = createStore({
                     console.log(err);
                 });
         },
+        logout({ commit }) {
+            commit("setUser", {
+                user: {},
+                token: null,
+            });
+            sessionStorage.removeItem("TOKEN");
+        },
     },
     mutations: {
         setUser(state, userData) {

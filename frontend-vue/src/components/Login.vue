@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import router from "../router";
 import store from "../store";
 const user = {
     email: "",
@@ -56,7 +57,19 @@ const user = {
 
 function login(e) {
     e.preventDefault();
-    store.dispatch("login", user);
+    // store.dispatch("login", user);
+    // console.log(user);
+
+    store
+        .dispatch("login", user)
+        .then(() => {
+            router.push({
+                name: "Dashboard",
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     console.log(user);
 }
 </script>

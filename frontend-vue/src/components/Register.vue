@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import axios from "axios";
+import router from "../router";
 import store from "../store";
 
 const user = {
@@ -72,7 +72,16 @@ const user = {
 
 function register(e) {
     e.preventDefault();
-    store.dispatch("register", user);
+    store
+        .dispatch("register", user)
+        .then(() => {
+            router.push({
+                name: "Dashboard",
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     console.log(user);
 }
 </script>
