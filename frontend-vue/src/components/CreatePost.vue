@@ -1,46 +1,56 @@
 <template>
     <div class="w-full flex justify-center mt-20">
         <form
-            @submit="login"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            @submit="createPost"
         >
             <div class="mb-4">
-                <h2 class="text-xl font-bold">Login Account</h2>
-            </div>
-
-            <div class="mb-4">
                 <label
-                    for="email"
+                    for="title"
                     class="block text-gray-700 text-sm font-bold mb-2"
-                    >E-mail</label
+                    >Title</label
                 >
                 <input
-                    type="email"
+                    type="text"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email"
-                    v-model="user.email"
-                    placeholder="Email"
+                    id="title"
+                    v-model="post.title"
+                    placeholder="Title"
                 />
             </div>
             <div class="mb-4">
                 <label
-                    for="email"
+                    for="content"
                     class="block text-gray-700 text-sm font-bold mb-2"
-                    >Password</label
+                    >Content</label
                 >
                 <input
-                    type="password"
+                    type="text"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password"
-                    v-model="user.password"
-                    placeholder="Password"
+                    id="content"
+                    v-model="post.content"
+                    placeholder="Content"
+                />
+            </div>
+            <div class="mb-4">
+                <label
+                    for="content"
+                    class="block text-gray-700 text-sm font-bold mb-2"
+                    >Image URL</label
+                >
+                <input
+                    type="text"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="image"
+                    v-model="post.image"
+                    placeholder="Image"
                 />
             </div>
             <div class="mb-4 flex justify-center">
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                 >
-                    Sign in
+                    Create Post
                 </button>
             </div>
         </form>
@@ -50,28 +60,13 @@
 <script setup>
 import router from "../router";
 import store from "../store";
-const user = {
-    email: "",
-    password: "",
+const post = {
+    title: "",
+    content: "",
+    image: "",
 };
-
-function login(e) {
+function createPost(e) {
     e.preventDefault();
-    // store.dispatch("login", user);
-    // console.log(user);
-
-    store
-        .dispatch("login", user)
-        .then((res) => {
-            console.log(res);
-
-            // router.push({
-            //     name: "Dashboard",
-            // });
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    console.log(user);
+    store.dispatch("createPost", post);
 }
 </script>

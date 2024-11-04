@@ -13,7 +13,7 @@ const store = createStore({
     getters: {},
     actions: {
         login({ commit }, user) {
-            axiosClient
+            return axiosClient
                 .post("/login", user)
                 .then((res) => {
                     console.log(res);
@@ -25,7 +25,7 @@ const store = createStore({
                 });
         },
         register({ commit }, user) {
-            axiosClient
+            return axiosClient
                 .post("/register", user)
                 .then((res) => {
                     commit("setUser", res.data);
@@ -41,6 +41,18 @@ const store = createStore({
                 token: null,
             });
             sessionStorage.removeItem("TOKEN");
+        },
+        createPost({ commit }, post) {
+            return axiosClient
+                .post("/posts", post)
+                .then((res) => {
+                    console.log(res);
+                    return res;
+                })
+                .catch((err) => {
+                    console.log(err);
+                    return err;
+                });
         },
     },
     mutations: {

@@ -3,6 +3,7 @@ import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import Home from "../components/Home.vue";
 import Dashboard from "../components/Dashboard.vue";
+import CreatePost from "../components/CreatePost.vue";
 
 const routes = [
     {
@@ -28,6 +29,12 @@ const routes = [
         component: Dashboard,
         meta: { tokenRequired: true },
     },
+    {
+        path: "/post/create",
+        name: "CreatePost",
+        component: CreatePost,
+        meta: { tokenRequired: true },
+    },
 ];
 
 const router = createRouter({
@@ -38,6 +45,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     if (to.meta.tokenRequired && !sessionStorage.getItem("TOKEN")) {
         next({ name: "Login" });
+        // } else if (to.meta.guest && sessionStorage.getItem("TOKEN")) {
+        //     next({ name: "Dashboard" });
     } else if (to.meta.guest && sessionStorage.getItem("TOKEN")) {
         next({ name: "Dashboard" });
     } else {
